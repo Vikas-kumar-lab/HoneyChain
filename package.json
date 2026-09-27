@@ -1,0 +1,37 @@
+{
+  "name": "honeychain",
+  "version": "1.0.0",
+  "description": "HoneyChain: Decentralized Smart Beekeeping, IoT Telemetry & Traceability Ecosystem (KVIC Honey Mission)",
+  "main": "truffle-config.js",
+  "scripts": {
+    "chain": "kill -9 $(lsof -ti:8546 2>/dev/null) 2>/dev/null || true; ganache --port 8546 --networkId 1337 --wallet.deterministic --db ./ganache_data",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate --reset --network development",
+    "postmigrate": "cp client/src/artifacts/HoneyChainCore.json hive-intelligence-service/HoneyChainCore.json",
+    "client": "npm start --prefix client",
+    "build": "npm run build --prefix client",
+    "hive-service": "node hive-intelligence-service/server.js",
+    "clean-ports": "kill -9 $(lsof -ti:3000 -ti:3001 -ti:5002 -ti:8546 2>/dev/null) 2>/dev/null || true",
+    "reset": "bash ./reset.sh",
+    "reset:live": "node scripts/reset-live.js",
+    "reset:start": "bash ./reset.sh --start",
+    "pinger": "node scripts/keepalive-bot.js",
+    "dev": "concurrently -n \"AI-IOT,UI\" -c \"cyan,green\" \"npm run hive-service\" \"npm run client\"",
+    "start": "concurrently -n \"CHAIN,AI-IOT,UI\" -c \"yellow,blue,green\" \"npm run chain\" \"npm run hive-service\" \"npm run client\""
+  },
+  "packageManager": "npm@10.0.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Vikas Kumar",
+  "license": "MIT",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "dotenv": "^17.4.2",
+    "truffle": "^5.7.4"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "ganache": "^7.9.2"
+  }
+}

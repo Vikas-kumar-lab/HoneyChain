@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta name="theme-color" content="#f59e0b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="HoneyChain" />
+  <meta name="description" content="HoneyChain: Blockchain Honey Traceability, Smart Beekeeping IoT & Edge AI - Ministry of MSME / KVIC Honey Mission" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!-- Leaflet Map Stylesheet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <title>HoneyChain | KVIC Smart Beekeeping & Traceability Ecosystem</title>
+  <style>
+    /* Permanently hide Google Translate top banner and prevent navbar displacement */
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    iframe.goog-te-banner-frame,
+    iframe.skiptranslate,
+    iframe[id^=":"],
+    iframe[id*=".container"],
+    .VIpgJd-ZVi9C-OR9Qfe,
+    .VIpgJd-ZVi9C-OR9Qfe-OiiCO,
+    .VIpgJd-ZVi9C-bvh2rc,
+    #goog-gt-tt,
+    .goog-te-balloon-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0px !important;
+      width: 0px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      border: none !important;
+      clip: rect(0, 0, 0, 0) !important;
+    }
+
+    html, body {
+      top: 0px !important;
+      position: static !important;
+    }
+
+    .site-header {
+      position: sticky !important;
+      top: 0px !important;
+      z-index: 1000 !important;
+    }
+
+    .goog-text-highlight {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    #google_translate_element {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+
+  <!-- Google Translate Hidden Engine -->
+  <div id="google_translate_element" style="display:none"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,pa,bn,mr,gu,ur,ta,te',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    // MutationObserver to immediately neutralize Google Translate body.style.top pushdown
+    (function() {
+      var cleanup = function() {
+        if (document.body && document.body.style.top && document.body.style.top !== '0px') {
+          document.body.style.top = '0px';
+        }
+        if (document.documentElement && document.documentElement.style.top && document.documentElement.style.top !== '0px') {
+          document.documentElement.style.top = '0px';
+        }
+        var frames = document.querySelectorAll('.goog-te-banner-frame, iframe.skiptranslate, iframe[id^=":"], .VIpgJd-ZVi9C-OR9Qfe, .VIpgJd-ZVi9C-bvh2rc');
+        for (var i = 0; i < frames.length; i++) {
+          frames[i].style.setProperty('display', 'none', 'important');
+          frames[i].style.setProperty('visibility', 'hidden', 'important');
+          frames[i].style.setProperty('height', '0px', 'important');
+          frames[i].style.setProperty('width', '0px', 'important');
+        }
+      };
+      var observer = new MutationObserver(cleanup);
+      observer.observe(document.documentElement, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        attributeFilter: ['style', 'class']
+      });
+      window.addEventListener('load', cleanup);
+      setInterval(cleanup, 200);
+    })();
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
